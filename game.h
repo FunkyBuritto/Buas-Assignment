@@ -16,7 +16,6 @@ public:
 	void KeyUp(int key);
 	void KeyDown(int key);
 	Surface* screen;
-
 private:
 	
 };

@@ -6,6 +6,7 @@
 #include <cassert>
 #include <cstring>
 #include "FreeImage.h"
+#include "PhysicsManager.h"
 
 namespace Tmpl8 {
 

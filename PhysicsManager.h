@@ -16,9 +16,12 @@ public:
 	static void SetGame(Tmpl8::Game* Game);
 	static void DebugPhysicsObject(Tmpl8::PhysicsObject* obj);
 	static Tmpl8::Game* GetGame() { return game; };
+	static void SetCamPos(Tmpl8::vec2 pos) { camPos = pos - Tmpl8::vec2(ScreenWidth / 2, ScreenHeight / 2); };
+	static Tmpl8::vec2 GetCamPos() { return camPos; };
 
 private:
 	static Tmpl8::Game* game;
+	static Tmpl8::vec2 camPos;
 	static float addedDelta;
 	static float interval;
 	static std::vector <Tmpl8::DynamicPhysicsObject*> dynamicObjects;

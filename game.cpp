@@ -2,6 +2,7 @@
 #include "surface.h"
 #include "PhysicsManager.h"
 #include "DynamicPhysicsObject.h"
+#include "Map.h"
 #include <sstream>
 #include <cstdio> //printf
 
@@ -22,21 +23,22 @@ namespace Tmpl8
 	void Game::Init()
 	{
 		PhysicsManager::SetGame(this);
-		PhysicsManager::SetPhysicsInterval(5);
+		PhysicsManager::SetPhysicsInterval(10);
 
-		cube1 = new StaticPhysicsObject(vec2(500, 800), &tile);
-		cube2 = new StaticPhysicsObject(vec2(620, 900), &tile);
-		cube3 = new StaticPhysicsObject(vec2(740, 900), &tile);
+		//cube1 = new StaticPhysicsObject(vec2(500, 800), &tile);
+		//cube2 = new StaticPhysicsObject(vec2(620, 900), &tile);
+		//cube3 = new StaticPhysicsObject(vec2(740, 900), &tile);
 
 		character = new DynamicPhysicsObject(vec2(590, 0), &characterSprite);
-		character->SetDrag(.075);
-		character->SetGravity(-.15);
+		character->SetDrag(.15);
+		character->SetGravity(-.3);
+
+		Map map = Map("assets/maps/TestMap.csv", &tile);
 	}
 	
 	void Game::Shutdown()
 	{
 	}
-
 
 	void Game::Tick(float deltaTime) {
 		// clear the graphics window
@@ -46,15 +48,18 @@ namespace Tmpl8
 		// Show the fps on screen
 		screen->Print((char*)std::to_string((int)(1000 / deltaTime)).c_str(), 0, 0, 0xffffff);
 
-		// Debug Colliders
+		// Debug Colliders 
+		/*
 		PhysicsManager::DebugPhysicsObject(character);
 		PhysicsManager::DebugPhysicsObject(cube1);
 		PhysicsManager::DebugPhysicsObject(cube2);
 		PhysicsManager::DebugPhysicsObject(cube3);
-
+		*/
 
 		character->AddVelocity(playerInput * characterSpeed * deltaTime);
 		character->sprite->SetFrame(frame);
+
+		PhysicsManager::SetCamPos(character->pos);
 	}
 
 	void Game::KeyUp(int key) {
@@ -62,7 +67,8 @@ namespace Tmpl8
 		{
 		case 44:
 			frame = 0;
-			character->AddVelocity(vec2(0, -15));
+			//character->AddVelocity(vec2(0, -150));
+			character->SetVelocity(vec2(0, -20));
 			break;
 		case 7:
 			playerInput.x = 0;

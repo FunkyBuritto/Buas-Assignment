@@ -224,6 +224,7 @@
   <ItemGroup>
     <ClCompile Include="DynamicPhysicsObject.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="StaticPhysicsObject.cpp" />
@@ -233,6 +234,7 @@
   <ItemGroup>
     <ClInclude Include="DynamicPhysicsObject.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="StaticPhysicsObject.h" />

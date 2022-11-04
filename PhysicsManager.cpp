@@ -4,6 +4,7 @@
 
 // Initialize variables
 Tmpl8::Game* PhysicsManager::game;
+Tmpl8::vec2 PhysicsManager::camPos;
 float PhysicsManager::addedDelta;
 float PhysicsManager::interval;
 
@@ -96,12 +97,12 @@ void PhysicsManager::PhysicsUpdate(float deltaTime)
 {
 	// Draw all DynamicPhysicsObject
 	for (uint32_t i = 0; i < dynamicObjects.size(); i++) {
-		dynamicObjects[i]->sprite->Draw(game->screen, dynamicObjects[i]->pos.x, dynamicObjects[i]->pos.y);
+		dynamicObjects[i]->sprite->Draw(game->screen, dynamicObjects[i]->pos.x - camPos.x, dynamicObjects[i]->pos.y - camPos.y);
 	}
 
 	// Draw all StaticPhysicsObject
 	for (uint32_t i = 0; i < staticObjects.size(); i++) {
-		staticObjects[i]->sprite->Draw(game->screen, staticObjects[i]->pos.x, staticObjects[i]->pos.y);
+		staticObjects[i]->sprite->Draw(game->screen, staticObjects[i]->pos.x - camPos.x, staticObjects[i]->pos.y - camPos.y);
 	}
 
 	// If we haven't reached our wanted time interval, return
