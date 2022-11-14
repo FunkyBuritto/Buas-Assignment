@@ -9,14 +9,17 @@
 namespace Tmpl8
 {
 	Sprite tile(new Surface("assets/tile.png"), 1);
-	StaticPhysicsObject* cube1;
-	StaticPhysicsObject* cube2;
-	StaticPhysicsObject* cube3;
+
+	Sprite leftWallSprite(new Surface("assets/WallLeft.png"), 1);
+	StaticPhysicsObject* wallLeft;
+
+	Sprite rightWallSprite(new Surface("assets/WallRight.png"), 1);
+	StaticPhysicsObject* wallRight;
 
 	Sprite characterSprite(new Surface("assets/CharacterBig.png"), 2);
 	DynamicPhysicsObject* character = NULL;
-	int frame = 0;
 
+	int frame = 0;
 	float characterSpeed = .025;
 	vec2 playerInput = vec2(0);
 	
@@ -25,15 +28,15 @@ namespace Tmpl8
 		PhysicsManager::SetGame(this);
 		PhysicsManager::SetPhysicsInterval(10);
 
-		//cube1 = new StaticPhysicsObject(vec2(500, 800), &tile);
-		//cube2 = new StaticPhysicsObject(vec2(620, 900), &tile);
-		//cube3 = new StaticPhysicsObject(vec2(740, 900), &tile);
+
+		wallLeft = new StaticPhysicsObject(vec2(300, -10000), &leftWallSprite);
+		wallRight = new StaticPhysicsObject(vec2(1560, -10000), &rightWallSprite);
 
 		character = new DynamicPhysicsObject(vec2(590, 0), &characterSprite);
 		character->SetDrag(.15);
 		character->SetGravity(-.3);
 
-		Map map = Map("assets/maps/TestMap.csv", &tile);
+		Map map = Map("assets/maps/TestMap.csv", &tile, vec2(360, -11000));
 	}
 	
 	void Game::Shutdown()
@@ -59,7 +62,7 @@ namespace Tmpl8
 		character->AddVelocity(playerInput * characterSpeed * deltaTime);
 		character->sprite->SetFrame(frame);
 
-		PhysicsManager::SetCamPos(character->pos);
+		PhysicsManager::SetCamPos(vec2(PhysicsManager::GetGame()->screen->GetWidth() / 2, character->pos.y));
 	}
 
 	void Game::KeyUp(int key) {
@@ -71,6 +74,7 @@ namespace Tmpl8
 			character->SetVelocity(vec2(0, -20));
 			break;
 		case 7:
+
 			playerInput.x = 0;
 			break;
 		case 4:

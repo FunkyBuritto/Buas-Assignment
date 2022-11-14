@@ -54,12 +54,16 @@ void Tmpl8::DynamicPhysicsObject::Update()
 	addedVelocity = 0;
 
 	// Apply drag if needed
-	if(velocity.x != 0)
+	if (abs(velocity.x) > drag.x)
 		velocity.x += (velocity.x < 0 ? drag.x : -drag.x);
-	if (velocity.y != 0)
+	else
+		velocity.x = 0;
+		
+	if (abs(velocity.y) > drag.y)
 		velocity.y += (velocity.y < 0 ? drag.y : -drag.y);
-
-	
+	else
+		velocity.y = 0;
+		
 	// Check if we are going to collide with a PhysicsObject
 	std::vector<PhysicsObject*> objs = PhysicsManager::CheckCollision(this, &velocity);
 
@@ -67,6 +71,7 @@ void Tmpl8::DynamicPhysicsObject::Update()
 	for (size_t i = 0; i < objs.size(); i++)
 	{
 		PhysicsObject* obj = objs[i];
+		// Frictionless collision
 		// Check if we can't move down and dont allow the velocity to be higher than 0 if true
 		if (pos.y + size.y + velocity.y >= obj->pos.y &&
 			pos.x + size.x >= obj->pos.x && pos.x <= obj->pos.x + obj->size.x) {
@@ -77,6 +82,14 @@ void Tmpl8::DynamicPhysicsObject::Update()
 			pos.x + size.x >= obj->pos.x && pos.x <= obj->pos.x + obj->size.x) {
 			velocity.y = velocity.y <= 0 ? 0 : velocity.y;
 		}
+
+		// Check if we collide horizontally
+		if ((pos.x + size.x + velocity.x >= obj->pos.x && pos.y + size.y >= obj->pos.y && pos.y <= obj->pos.y + obj->size.y) ||
+			(pos.x + velocity.x <= obj->pos.x + obj->size.x && pos.y + size.y >= obj->pos.y && pos.y <= obj->pos.y + obj->size.y)) {
+			velocity.x = -velocity.x;
+		}
+
+		/*
 		// Check if we can't move Right and dont allow the velocity to be higher than 0 if true
 		if (pos.x + size.x + velocity.x >= obj->pos.x && 
 			pos.y + size.y >= obj->pos.y && pos.y <= obj->pos.y + obj->size.y) {
@@ -87,8 +100,7 @@ void Tmpl8::DynamicPhysicsObject::Update()
 			pos.y + size.y >= obj->pos.y && pos.y <= obj->pos.y + obj->size.y) {
 			velocity.x = velocity.x <= 0 ? 0 : velocity.x;
 		}
-
-		printf("\n");
+		*/
 	}
 
 	// Apply velocity to position

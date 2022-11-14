@@ -1,7 +1,5 @@
-﻿  Map.cpp
-C:\Users\milan\Documents\Buas\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\milan\Documents\Buas\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\milan\Documents\Buas\Buas-Assignment\Map.cpp(30,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\milan\Documents\Buas\Buas-Assignment\Map.cpp(38,101): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\milan\Documents\Buas\Buas-Assignment\Map.cpp(38,84): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-  tmpl_2019-08.vcxproj -> C:\Users\milan\Documents\Buas\Buas-Assignment\tmpl_2019-08_x86_debug.exe
+﻿  game.cpp
+D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\VSdev\Buas-Assignment\game.cpp(72,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  tmpl_2019-08.vcxproj -> D:\VSdev\Buas-Assignment\tmpl_2019-08_x86_debug.exe

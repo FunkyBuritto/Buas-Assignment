@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 
-Map::Map(char* file, Tmpl8::Sprite* tileSprite)
+Map::Map(char* file, Tmpl8::Sprite* tileSprite, Tmpl8::vec2 offset)
 {
 	// Get Map File
 	std::ifstream mapfile;
@@ -33,7 +33,7 @@ Map::Map(char* file, Tmpl8::Sprite* tileSprite)
 
 			// If we find a tile
 			if (tile != "" && stoi(tile) == 0) {
-				Tmpl8::StaticPhysicsObject* obj = new Tmpl8::StaticPhysicsObject(Tmpl8::vec2(i * 120, itteration* 120), tileSprite);
+				Tmpl8::StaticPhysicsObject* obj = new Tmpl8::StaticPhysicsObject(Tmpl8::vec2(i * 120 + offset.x, itteration* 120 + offset.y), tileSprite);
 				tiles.push_back(obj);
 			}
 
