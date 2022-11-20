@@ -59,7 +59,7 @@ namespace Tmpl8
 		PhysicsManager::DebugPhysicsObject(cube3);
 		*/
 
-		character->AddVelocity(playerInput * characterSpeed * deltaTime);
+		//character->AddVelocity(playerInput * characterSpeed * deltaTime);
 		character->sprite->SetFrame(frame);
 
 		PhysicsManager::SetCamPos(vec2(PhysicsManager::GetGame()->screen->GetWidth() / 2, character->pos.y));
@@ -70,31 +70,37 @@ namespace Tmpl8
 		{
 		case 44:
 			frame = 0;
-			//character->AddVelocity(vec2(0, -150));
-			character->SetVelocity(vec2(0, -20));
-			break;
-		case 7:
-
-			playerInput.x = 0;
-			break;
-		case 4:
-			playerInput.x = 0;
+			character->SetVelocity(vec2(playerInput.x * 15, playerInput.y * 20));
+			playerInput = vec2(0);
 			break;
 		}
 	}
 
 	void Game::KeyDown(int key) {
+		printf((char*)std::to_string(playerInput.x).c_str());
+		printf(", ");
+		printf((char*)std::to_string(playerInput.y).c_str());
+		printf("\n");
 		switch (key)
 		{
 		case 44:
 			frame = 1;
 			break;
+		case 26:
+			playerInput.y -= .1;
+			break;
+		case 22:
+			playerInput.y += .1;
+			break;
 		case 7:
-			playerInput.x = 1;
+			playerInput.x += .1;
 			break;
 		case 4:
-			playerInput.x = -1;
+			playerInput.x -= .1;
 			break;
 		}
+		// Clamp playerinput between -1 and 1
+		playerInput.y = playerInput.y < -1 ? -1 : (playerInput.y > 1 ? 1 : playerInput.y);
+		playerInput.x = playerInput.x < -1 ? -1 : (playerInput.x > 1 ? 1 : playerInput.x);
 	}
 };
