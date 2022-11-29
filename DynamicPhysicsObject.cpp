@@ -46,6 +46,8 @@ Tmpl8::DynamicPhysicsObject::DynamicPhysicsObject(vec2 p, vec2 r, Sprite* s, flo
 
 void Tmpl8::DynamicPhysicsObject::Update()
 {
+	bool hasBounced = false;
+
 	// Apply gravity to velocity
 	velocity.y -= gravity;
 
@@ -71,6 +73,7 @@ void Tmpl8::DynamicPhysicsObject::Update()
 	for (size_t i = 0; i < objs.size(); i++)
 	{
 		PhysicsObject* obj = objs[i];
+		
 		// Frictionless collision
 		// Check if we can't move down and dont allow the velocity to be higher than 0 if true
 		if (pos.y + size.y + velocity.y >= obj->pos.y &&
@@ -83,12 +86,19 @@ void Tmpl8::DynamicPhysicsObject::Update()
 			velocity.y = velocity.y <= 0 ? 0 : velocity.y;
 		}
 
+		
 		// Check if we collide horizontally
 		if ((pos.x + size.x + velocity.x >= obj->pos.x && pos.y + size.y >= obj->pos.y && pos.y <= obj->pos.y + obj->size.y) ||
 			(pos.x + velocity.x <= obj->pos.x + obj->size.x && pos.y + size.y >= obj->pos.y && pos.y <= obj->pos.y + obj->size.y)) {
-			velocity.x = -velocity.x;
+			
+			//Check if we can bounce
+			if (velocity.x != 0 && !hasBounced) {
+				printf("bounced");
+				velocity.x = -velocity.x;
+				hasBounced = true;
+			}
 		}
-
+		
 		/*
 		// Check if we can't move Right and dont allow the velocity to be higher than 0 if true
 		if (pos.x + size.x + velocity.x >= obj->pos.x && 
@@ -102,6 +112,7 @@ void Tmpl8::DynamicPhysicsObject::Update()
 		}
 		*/
 	}
+	
 
 	// Apply velocity to position
 	pos += velocity;

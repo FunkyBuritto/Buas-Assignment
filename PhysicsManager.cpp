@@ -131,5 +131,5 @@ void PhysicsManager::SetGame(Tmpl8::Game* Game)
 
 void PhysicsManager::DebugPhysicsObject(Tmpl8::PhysicsObject* obj)
 {
-	game->screen->Box(obj->pos.x, obj->pos.y, obj->pos.x + obj->size.x, obj->pos.y + obj->size.y, 0x00ff00);
+	game->screen->Box(obj->pos.x - camPos.x, obj->pos.y - camPos.y, obj->pos.x + obj->size.x - camPos.x, obj->pos.y + obj->size.y - camPos.y, 0x00ff00);
 }

@@ -1,37 +1,5 @@
-﻿  DynamicPhysicsObject.cpp
-D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\DynamicPhysicsObject.cpp(18,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\DynamicPhysicsObject.cpp(18,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\DynamicPhysicsObject.cpp(27,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\DynamicPhysicsObject.cpp(27,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Map.cpp
-D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Map.cpp(30,24): warning C4018: '<': signed/unsigned mismatch
-  PhysicsManager.cpp
-D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(100,111): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(100,74): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(105,108): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(105,72): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(134,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(134,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(134,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\VSdev\Buas-Assignment\PhysicsManager.cpp(134,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  StaticPhysicsObject.cpp
-D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\StaticPhysicsObject.cpp(11,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\StaticPhysicsObject.cpp(11,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  game.cpp
-D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\game.cpp(65,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  surface.cpp
-D:\VSdev\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\VSdev\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  template.cpp
-  Generating Code...
-  tmpl_2019-08.vcxproj -> D:\VSdev\Buas-Assignment\tmpl_2019-08_x86_debug.exe
+﻿  game.cpp
+C:\Users\milan\Documents\Buas\Buas-Assignment\Rect2D.h(25,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\milan\Documents\Buas\Buas-Assignment\Rect2D.h(26,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\milan\Documents\Buas\Buas-Assignment\game.cpp(58,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  tmpl_2019-08.vcxproj -> C:\Users\milan\Documents\Buas\Buas-Assignment\tmpl_2019-08_x86_debug.exe

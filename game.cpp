@@ -28,7 +28,6 @@ namespace Tmpl8
 		PhysicsManager::SetGame(this);
 		PhysicsManager::SetPhysicsInterval(10);
 
-
 		wallLeft = new StaticPhysicsObject(vec2(300, -10000), &leftWallSprite);
 		wallRight = new StaticPhysicsObject(vec2(1560, -10000), &rightWallSprite);
 
@@ -49,20 +48,17 @@ namespace Tmpl8
 		// Call the physics update method
 		PhysicsManager::PhysicsUpdate(deltaTime);
 		// Show the fps on screen
-		screen->Print((char*)std::to_string((int)(1000 / deltaTime)).c_str(), 0, 0, 0xffffff);
+		screen->Print((char*)std::to_string((int)(1000 / deltaTime)).c_str(), 0, 0, 0xffffff);		
 
 		// Debug Colliders 
-		/*
 		PhysicsManager::DebugPhysicsObject(character);
-		PhysicsManager::DebugPhysicsObject(cube1);
-		PhysicsManager::DebugPhysicsObject(cube2);
-		PhysicsManager::DebugPhysicsObject(cube3);
-		*/
 
-		//character->AddVelocity(playerInput * characterSpeed * deltaTime);
 		character->sprite->SetFrame(frame);
 
-		PhysicsManager::SetCamPos(vec2(PhysicsManager::GetGame()->screen->GetWidth() / 2, character->pos.y));
+		vec2 cpos = vec2(PhysicsManager::GetGame()->screen->GetWidth() / 2, character->pos.y);
+		PhysicsManager::SetCamPos(cpos);
+		screen->Bar(25, ScreenHeight - 150, 150, ScreenHeight - 100, 0xffffff);
+		screen->Box(25, ScreenHeight - 150, 290, ScreenHeight - 100, 0xffffff);
 	}
 
 	void Game::KeyUp(int key) {
@@ -77,28 +73,25 @@ namespace Tmpl8
 	}
 
 	void Game::KeyDown(int key) {
-		printf((char*)std::to_string(playerInput.x).c_str());
-		printf(", ");
-		printf((char*)std::to_string(playerInput.y).c_str());
-		printf("\n");
 		switch (key)
 		{
 		case 44:
 			frame = 1;
 			break;
 		case 26:
-			playerInput.y -= .1;
+			playerInput.y -= .2;
 			break;
 		case 22:
-			playerInput.y += .1;
+			playerInput.y += .2;
 			break;
 		case 7:
-			playerInput.x += .1;
+			playerInput.x += .2;
 			break;
 		case 4:
-			playerInput.x -= .1;
+			playerInput.x -= .2;
 			break;
 		}
+
 		// Clamp playerinput between -1 and 1
 		playerInput.y = playerInput.y < -1 ? -1 : (playerInput.y > 1 ? 1 : playerInput.y);
 		playerInput.x = playerInput.x < -1 ? -1 : (playerInput.x > 1 ? 1 : playerInput.x);
