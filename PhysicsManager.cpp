@@ -47,8 +47,7 @@ std::vector <Tmpl8::PhysicsObject*> PhysicsManager::CheckCollision(Tmpl8::Dynami
 		Tmpl8::vec2 obl = dynamicObjects[i]->pos + Tmpl8::vec2(0, dynamicObjects[i]->size.y);
 
 		// Check Topleft
-		if (tl > otl && tl < obr)
-			objs.push_back(dynamicObjects[i]);
+		if (tl > otl && tl < obr) objs.push_back(dynamicObjects[i]);
 
 		// Check BottomRight
 		else if (br < obr && br > otl)
@@ -97,7 +96,7 @@ void PhysicsManager::PhysicsUpdate(float deltaTime)
 {
 	// Draw all DynamicPhysicsObject
 	for (uint32_t i = 0; i < dynamicObjects.size(); i++) {
-		dynamicObjects[i]->sprite->Draw(game->screen, dynamicObjects[i]->pos.x - camPos.x, dynamicObjects[i]->pos.y - camPos.y);
+		dynamicObjects[i]->sprite->Draw(game->screen, dynamicObjects[i]->pos.x - camPos.x, dynamicObjects[i]->pos.y - camPos.y, dynamicObjects[i]->flipX);
 	}
 
 	// Draw all StaticPhysicsObject

@@ -379,7 +379,7 @@ Sprite::~Sprite()
 	delete[] m_Start;
 }
 
-void Sprite::Draw( Surface* a_Target, int a_X, int a_Y )
+void Sprite::Draw(Surface* a_Target, int a_X, int a_Y, bool flipX)
 {
 	if ((a_X < -m_Width) || (a_X > (a_Target->GetWidth() + m_Width))) return;
 	if ((a_Y < -m_Height) || (a_Y > (a_Target->GetHeight() + m_Height))) return;
@@ -419,7 +419,7 @@ void Sprite::Draw( Surface* a_Target, int a_X, int a_Y )
 					if (c1 & 0xffffff) 
 					{
 						const Pixel c2 = *(dest + addr + x);
-						*(dest + addr + x) = AddBlend( c1, c2 );
+						*(dest + addr + (flipX ? width - x : x)) = AddBlend( c1, c2 );
 					}
 				}
 			}
@@ -429,7 +429,7 @@ void Sprite::Draw( Surface* a_Target, int a_X, int a_Y )
 				for ( int x = xs; x < width; x++ )
 				{
 					const Pixel c1 = *(src + x);
-					if (c1 & 0xffffff) *(dest + addr + x) = c1;
+					if (c1 & 0xffffff) *(dest + addr + (flipX ? width - x : x)) = c1;
 				}
 			}
 			addr += dpitch;

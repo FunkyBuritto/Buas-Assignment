@@ -31,7 +31,7 @@ namespace Tmpl8
 		wallLeft = new StaticPhysicsObject(vec2(300, -10000), &leftWallSprite);
 		wallRight = new StaticPhysicsObject(vec2(1560, -10000), &rightWallSprite);
 
-		character = new DynamicPhysicsObject(vec2(590, 0), &characterSprite);
+		character = new DynamicPhysicsObject(vec2(ScreenWidth / 2, 760), &characterSprite);
 		character->SetDrag(.15);
 		character->SetGravity(-.3);
 
@@ -51,14 +51,25 @@ namespace Tmpl8
 		screen->Print((char*)std::to_string((int)(1000 / deltaTime)).c_str(), 0, 0, 0xffffff);		
 
 		// Debug Colliders 
-		PhysicsManager::DebugPhysicsObject(character);
+		//PhysicsManager::DebugPhysicsObject(character);
 
 		character->sprite->SetFrame(frame);
 
 		vec2 cpos = vec2(PhysicsManager::GetGame()->screen->GetWidth() / 2, character->pos.y);
 		PhysicsManager::SetCamPos(cpos);
-		screen->Bar(25, ScreenHeight - 150, 150, ScreenHeight - 100, 0xffffff);
-		screen->Box(25, ScreenHeight - 150, 290, ScreenHeight - 100, 0xffffff);
+
+		// Temporary Input UI
+		//Right input
+		screen->Bar(175, ScreenHeight - 125, 175 + 115 * playerInput.x, ScreenHeight - 100, 0xffffff);
+		screen->Box(175, ScreenHeight - 125, 290, ScreenHeight - 100, 0xffffff);
+
+		//Left input
+		screen->Bar(150 + 125 * playerInput.x, ScreenHeight - 125, 150, ScreenHeight - 100, 0xffffff);
+		screen->Box(25, ScreenHeight - 125, 150, ScreenHeight - 100, 0xffffff);
+
+		//Vertical Input
+		screen->Bar(150, ScreenHeight - 150 + 125 * (playerInput.y + .2), 175, ScreenHeight - 150, 0xffffff);
+		screen->Box(150, ScreenHeight - 250, 175, ScreenHeight - 150, 0xffffff);
 	}
 
 	void Game::KeyUp(int key) {
@@ -67,7 +78,7 @@ namespace Tmpl8
 		case 44:
 			frame = 0;
 			character->SetVelocity(vec2(playerInput.x * 15, playerInput.y * 20));
-			playerInput = vec2(0);
+			playerInput = vec2(0, -.2);
 			break;
 		}
 	}
@@ -92,8 +103,8 @@ namespace Tmpl8
 			break;
 		}
 
-		// Clamp playerinput between -1 and 1
-		playerInput.y = playerInput.y < -1 ? -1 : (playerInput.y > 1 ? 1 : playerInput.y);
+		// Clamp playerinput
+		playerInput.y = playerInput.y < -1 ? -1 : (playerInput.y > -.2 ? -.2 : playerInput.y);
 		playerInput.x = playerInput.x < -1 ? -1 : (playerInput.x > 1 ? 1 : playerInput.x);
 	}
 };

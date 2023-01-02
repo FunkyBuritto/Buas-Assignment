@@ -22,6 +22,9 @@ public:
 	vec2 spriteOffset;
 	float spritePitch;
 
+	bool flipX = false;
+	bool grounded;
+
 private:
 	vec2 addedVelocity;
 	vec2 velocity;
