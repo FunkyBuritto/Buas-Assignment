@@ -227,6 +227,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="StaticPhysicsObject.cpp" />
     <ClCompile Include="surface.cpp" />
     <ClCompile Include="template.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="PhysicsObject.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="StaticPhysicsObject.h" />
     <ClInclude Include="surface.h" />
     <ClInclude Include="template.h" />

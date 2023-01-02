@@ -2,6 +2,7 @@
 #include "surface.h"
 #include "PhysicsManager.h"
 #include "DynamicPhysicsObject.h"
+#include "Player.h"
 #include "Map.h"
 #include <sstream>
 #include <cstdio> //printf
@@ -17,7 +18,7 @@ namespace Tmpl8
 	StaticPhysicsObject* wallRight;
 
 	Sprite characterSprite(new Surface("assets/CharacterBig.png"), 2);
-	DynamicPhysicsObject* character = NULL;
+	Player* character = NULL;
 
 	int frame = 0;
 	float characterSpeed = .025;
@@ -26,12 +27,12 @@ namespace Tmpl8
 	void Game::Init()
 	{
 		PhysicsManager::SetGame(this);
-		PhysicsManager::SetPhysicsInterval(10);
+		PhysicsManager::SetPhysicsInterval(16);
 
 		wallLeft = new StaticPhysicsObject(vec2(300, -10000), &leftWallSprite);
 		wallRight = new StaticPhysicsObject(vec2(1560, -10000), &rightWallSprite);
 
-		character = new DynamicPhysicsObject(vec2(ScreenWidth / 2, 760), &characterSprite);
+		character = new Player(vec2(ScreenWidth / 2, 760), &characterSprite);
 		character->SetDrag(.15);
 		character->SetGravity(-.3);
 
@@ -77,8 +78,11 @@ namespace Tmpl8
 		{
 		case 44:
 			frame = 0;
-			character->SetVelocity(vec2(playerInput.x * 15, playerInput.y * 20));
-			playerInput = vec2(0, -.2);
+			// Apply velocity to player if grounded and reset player input
+			if (character->grounded) {
+				character->SetVelocity(vec2(playerInput.x * 13, playerInput.y * 20));
+				playerInput = vec2(0, -.2);
+			}
 			break;
 		}
 	}
@@ -87,7 +91,7 @@ namespace Tmpl8
 		switch (key)
 		{
 		case 44:
-			frame = 1;
+			if (character->grounded) frame = 1;
 			break;
 		case 26:
 			playerInput.y -= .2;
