@@ -225,6 +225,7 @@
     <ClCompile Include="DynamicPhysicsObject.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapTrigger.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="DynamicPhysicsObject.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapTrigger.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Player.h" />

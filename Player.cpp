@@ -7,13 +7,15 @@ Tmpl8::Player::Player(vec2 p, Sprite* s)
 	pos = p; sprite = s; gravity = 0; velocity = vec2(0, 0);
 	size = vec2(sprite->GetWidth(), sprite->GetHeight());
 	addedVelocity = vec2(0);
+	grounded = false;
 
-	PhysicsManager::AddToDynamicQue(this);
+	//PhysicsManager::AddToDynamicQue(this);
 }
 
 void Tmpl8::Player::Update()
 {
-	bool hbounce, vbounce;
+	bool hbounce = false;
+	bool vbounce = false;
 
 	// Apply gravity to velocity
 	velocity.y -= gravity;

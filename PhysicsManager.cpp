@@ -7,6 +7,7 @@ Tmpl8::Game* PhysicsManager::game;
 Tmpl8::vec2 PhysicsManager::camPos;
 float PhysicsManager::addedDelta;
 float PhysicsManager::interval;
+Map PhysicsManager::map;
 
 // Initializes physics objects lists
 std::vector<Tmpl8::DynamicPhysicsObject*> PhysicsManager::dynamicObjects;
@@ -131,4 +132,14 @@ void PhysicsManager::SetGame(Tmpl8::Game* Game)
 void PhysicsManager::DebugPhysicsObject(Tmpl8::PhysicsObject* obj)
 {
 	game->screen->Box(obj->pos.x - camPos.x, obj->pos.y - camPos.y, obj->pos.x + obj->size.x - camPos.x, obj->pos.y + obj->size.y - camPos.y, 0x00ff00);
+}
+
+void PhysicsManager::LoadMap(char* file, Tmpl8::Sprite* tileSprite, Tmpl8::Sprite* finishSprite, Tmpl8::vec2 offset, Tmpl8::Player* character, Tmpl8::StaticPhysicsObject* wallL, Tmpl8::StaticPhysicsObject* wallR)
+{
+	staticObjects.clear();
+	dynamicObjects.clear();
+	AddToStaticQue(wallL);
+	AddToStaticQue(wallR);
+	AddToDynamicQue(character);
+	PhysicsManager::map = Map(file, tileSprite, finishSprite, offset, character, wallL, wallR);
 }

@@ -15,6 +15,7 @@ public:
 	void MouseMove( int x, int y ) { /* implement if you want to detect mouse movement */ }
 	void KeyUp(int key);
 	void KeyDown(int key);
+	void LoadMenu();
 	Surface* screen;
 private:
 	
