@@ -143,9 +143,9 @@ namespace Tmpl8
 		PhysicsManager::LoadMap("assets/maps/MenuMap.csv", &tile, &finish, vec2(360, 0), character, wallLeft, wallRight);
 
 		// Load map triggers
-		mapTrigger1 = new MapTrigger("assets/maps/TestMap.csv", &tile, &map1, &finish, vec2(490, 624), character, wallLeft, wallRight);
-		mapTrigger2 = new MapTrigger("assets/maps/TestMap.csv", &tile, &map2, &finish, vec2(1340, 624), character, wallLeft, wallRight);
-		mapTrigger3 = new MapTrigger("assets/maps/TestMap.csv", &tile, &map3, &finish, vec2(490, 264), character, wallLeft, wallRight);
-		mapTrigger4 = new MapTrigger("assets/maps/TestMap.csv", &tile, &map4, &finish, vec2(1340, 264), character, wallLeft, wallRight);
+		mapTrigger1 = new MapTrigger("assets/maps/Map1.csv", &tile, &map1, &finish, vec2(490, 624), character, wallLeft, wallRight);
+		mapTrigger2 = new MapTrigger("assets/maps/Map2.csv", &tile, &map2, &finish, vec2(1340, 624), character, wallLeft, wallRight);
+		mapTrigger3 = new MapTrigger("assets/maps/Map3.csv", &tile, &map3, &finish, vec2(490, 264), character, wallLeft, wallRight);
+		mapTrigger4 = new MapTrigger("assets/maps/Map4.csv", &tile, &map4, &finish, vec2(1340, 264), character, wallLeft, wallRight);
 	}
 };
