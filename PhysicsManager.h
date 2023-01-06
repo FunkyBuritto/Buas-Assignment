@@ -4,6 +4,7 @@
 #include "StaticPhysicsObject.h"
 #include "PhysicsObject.h"
 #include "game.h"
+#include "Map.h"
 
 class PhysicsManager
 {
@@ -18,6 +19,7 @@ public:
 	static void SetCamPos(Tmpl8::vec2 pos) { camPos = pos - Tmpl8::vec2(ScreenWidth / 2, ScreenHeight / 2); };
 	static Tmpl8::vec2 GetCamPos() { return camPos; };
 	static Tmpl8::Game* GetGame() { return game; };	
+	static void LoadMap(char* file, Tmpl8::Sprite* tileSprite, Tmpl8::Sprite* finishSprite, Tmpl8::vec2 offset, Tmpl8::Player* character, Tmpl8::StaticPhysicsObject* wallL, Tmpl8::StaticPhysicsObject* wallR);
 
 private:
 	static float addedDelta;
@@ -26,6 +28,7 @@ private:
 	static Tmpl8::vec2 camPos;
 	static std::vector <Tmpl8::DynamicPhysicsObject*> dynamicObjects;
 	static std::vector <Tmpl8::StaticPhysicsObject*> staticObjects;
+	static Map map;
 };
 
 

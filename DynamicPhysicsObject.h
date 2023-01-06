@@ -11,21 +11,18 @@ public:
 	DynamicPhysicsObject(vec2 p, vec2 r, Sprite* s);
 	DynamicPhysicsObject(vec2 p, vec2 r, Sprite* s, float g);
 
-	void Update();
+	virtual void Update();
 
 	void SetGravity(float g) { gravity = g; };
-	void SetVelocity(vec2 v) { velocity = v; };
-	void AddVelocity(vec2 v) { addedVelocity += v; };
 	void SetDrag(float d)	 { drag = d < 0 ? 0: vec2(d); };
 	void SetDrag(vec2 d)	 { drag = d.length() < 0 ? vec2(0) : d;	};
-
-	vec2 spriteOffset;
-	float spritePitch;
+	void SetVelocity(vec2 v) { velocity = v; };
+	void AddVelocity(vec2 v) { addedVelocity += v; };
+	vec2 GetVelocity() { return velocity; };
 
 	bool flipX = false;
-	bool grounded;
 
-private:
+protected:
 	vec2 addedVelocity;
 	vec2 velocity;
 	vec2 drag;
