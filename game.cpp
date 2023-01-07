@@ -39,8 +39,6 @@ namespace Tmpl8
 	
 	void Game::Init()
 	{
-		//finish = Sprite( new Surface("assets/Map2.png"), 1);
-
 		// Initialize the PhysicsManager
 		PhysicsManager::SetGame(this);
 		PhysicsManager::SetPhysicsInterval(8);
@@ -72,7 +70,7 @@ namespace Tmpl8
 		
 		// Show the fps on screen
 		//screen->Print((char*)std::to_string((int)(1000 / deltaTime)).c_str(), 0, 0, 0xffffff);
-		// Debug Colliders 
+		// Debug Collider 
 		//PhysicsManager::DebugPhysicsObject(character);
 
 		character->sprite->SetFrame(frame);

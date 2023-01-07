@@ -136,10 +136,15 @@ void PhysicsManager::DebugPhysicsObject(Tmpl8::PhysicsObject* obj)
 
 void PhysicsManager::LoadMap(char* file, Tmpl8::Sprite* tileSprite, Tmpl8::Sprite* finishSprite, Tmpl8::vec2 offset, Tmpl8::Player* character, Tmpl8::StaticPhysicsObject* wallL, Tmpl8::StaticPhysicsObject* wallR)
 {
+	// Clear all Physics objects
 	staticObjects.clear();
 	dynamicObjects.clear();
+
+	// Add all default Physics objects to the que
 	AddToStaticQue(wallL);
 	AddToStaticQue(wallR);
 	AddToDynamicQue(character);
+
+	// Load the map
 	PhysicsManager::map = Map(file, tileSprite, finishSprite, offset, character, wallL, wallR);
 }
